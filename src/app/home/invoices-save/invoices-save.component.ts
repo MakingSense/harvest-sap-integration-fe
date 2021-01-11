@@ -34,9 +34,17 @@ export class InvoicesSaveComponent implements OnInit {
     };
 
     this.invoiceService.save(params)
-      .subscribe(result => {
-        console.log(result);
-        this.notificationService.notify(NotificationType.SUCCESS, 'Invoices were saved on SAP');
+      .subscribe(results => {
+        console.log(results);
+
+        const counts = results.reduce((totals, result) => {
+          totals[result.status] += 1;
+          return totals;
+        }, { success: 0, error: 0 });
+
+        const countsMessage = `${counts.success} saved successfully, ${counts.error} errored`;
+
+        this.notificationService.notify(NotificationType.SUCCESS, `Invoices were saved on SAP. ${countsMessage}`);
       });
   }
 }

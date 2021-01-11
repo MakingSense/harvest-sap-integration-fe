@@ -19,3 +19,16 @@ export interface HarvestPagedResponse {
         last: string;
     };
 }
+
+interface ResponseSuccessItem<T> {
+    status: 'success';
+    value: T;
+}
+
+interface ResponseErrorItem {
+    status: 'error';
+    id: number;
+    error: any;
+}
+
+export type ResponseItem<T> = ResponseSuccessItem<T> | ResponseErrorItem;

@@ -27,3 +27,7 @@ export interface InvoiceSearchParams extends InvoiceParams {
     page?: number;
     per_page?: number;
 }
+
+export interface SAPInvoice {
+    CardCode: string;
+}
