@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Moment } from 'moment';
+import { MatDialog } from '@angular/material/dialog';
 
 import { InvoiceService } from '../../core/invoice/invoice.service';
 import { NotificationService } from '../../core/notification/notification.service';
 import { NotificationType } from '../../core/notification/notification.type';
+import { ImportReviewComponent } from '../import-review/import-review.component';
 
 @Component({
   selector: 'app-invoices-save',
@@ -19,7 +21,8 @@ export class InvoicesSaveComponent implements OnInit {
 
   constructor(
     private invoiceService: InvoiceService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +48,8 @@ export class InvoicesSaveComponent implements OnInit {
         const countsMessage = `${counts.success} saved successfully, ${counts.error} errored`;
 
         this.notificationService.notify(NotificationType.SUCCESS, `Invoices were saved on SAP. ${countsMessage}`);
+
+        this.dialog.open(ImportReviewComponent);
       });
   }
 }

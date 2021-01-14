@@ -11,6 +11,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
@@ -18,6 +19,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { InvoicesComponent } from './invoices/invoices.component';
 import { HarvestInvoicesComponent } from './harvest-invoices/harvest-invoices.component';
 import { InvoicesSaveComponent } from './invoices-save/invoices-save.component';
+import { ImportReviewComponent } from './import-review/import-review.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,11 @@ import { InvoicesSaveComponent } from './invoices-save/invoices-save.component';
     DashboardComponent,
     InvoicesComponent,
     HarvestInvoicesComponent,
-    InvoicesSaveComponent
+    InvoicesSaveComponent,
+    ImportReviewComponent
+  ],
+  entryComponents: [
+    ImportReviewComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +46,8 @@ import { InvoicesSaveComponent } from './invoices-save/invoices-save.component';
     MatProgressSpinnerModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ]
 })
 export class HomeModule { }
