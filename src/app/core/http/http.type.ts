@@ -27,7 +27,7 @@ interface ResponseSuccessItem<T> {
 
 interface ResponseErrorItem {
     status: 'error';
-    id: number;
+    data: any;
     error: any;
 }
 
