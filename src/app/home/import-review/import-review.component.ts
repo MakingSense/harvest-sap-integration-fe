@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+import { SAPInvoice } from '../../core/invoice/invoice.type';
+import { ResponseItem } from '../../core/http/http.type';
 
 @Component({
   selector: 'app-import-review',
@@ -7,7 +11,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImportReviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: ResponseItem<SAPInvoice>[]
+  ) { }
+
+  displayedColumns = ['id', 'number', 'status', 'message'];
 
   ngOnInit(): void {
   }

@@ -49,7 +49,11 @@ export class InvoicesSaveComponent implements OnInit {
 
         this.notificationService.notify(NotificationType.SUCCESS, `Invoices were saved on SAP. ${countsMessage}`);
 
-        this.dialog.open(ImportReviewComponent);
+        this.dialog.open(ImportReviewComponent, {
+          data: results,
+          width: '100%',
+          height : 'auto'
+        });
       });
   }
 }
