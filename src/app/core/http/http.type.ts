@@ -20,14 +20,18 @@ export interface HarvestPagedResponse {
     };
 }
 
-interface ResponseSuccessItem<T> {
+interface ResponseItemBase {
+    status: 'success' | 'error';
+    info: any;
+}
+
+interface ResponseSuccessItem<T> extends ResponseItemBase {
     status: 'success';
     value: T;
 }
 
-interface ResponseErrorItem {
+interface ResponseErrorItem extends ResponseItemBase {
     status: 'error';
-    data: any;
     error: any;
 }
 

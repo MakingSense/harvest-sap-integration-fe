@@ -7,7 +7,7 @@ import { RequestOptions } from './http.type';
 import { NotificationService } from '../notification/notification.service';
 import { NotificationType } from '../notification/notification.type';
 
-const REQUEST_TIMEOUT = 6000;
+const REQUEST_TIMEOUT = 60000;
 const REQUEST_TIMEOUT_RETRIES = 1;
 const REQUEST_RETRY_TIMEOUT = 3000;
 

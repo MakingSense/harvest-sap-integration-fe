@@ -4,12 +4,12 @@
   <table mat-table [dataSource]="data" class="mat-elevation-z8 full-width-table">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>Id</th>
-      <td mat-cell *matCellDef="let row">{{row.value?.U_IDHARV || row.data?.id}}</td>
+      <td mat-cell *matCellDef="let row">{{row.info.id}}</td>
     </ng-container>
 
     <ng-container matColumnDef="number">
       <th mat-header-cell *matHeaderCellDef>Number</th>
-      <td mat-cell *matCellDef="let row">{{row.value?.NumAtCard || row.data?.number}}</td>
+      <td mat-cell *matCellDef="let row">{{row.info.number}}</td>
     </ng-container>
 
     <ng-container matColumnDef="status">
