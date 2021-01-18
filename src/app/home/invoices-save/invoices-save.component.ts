@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Moment } from 'moment';
 import { MatDialog } from '@angular/material/dialog';
+import { BehaviorSubject } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 import { InvoiceService } from '../../core/invoice/invoice.service';
 import { NotificationService } from '../../core/notification/notification.service';
@@ -19,6 +21,8 @@ export class InvoicesSaveComponent implements OnInit {
   @Input() from: Moment;
   @Input() to: Moment;
 
+  saving = new BehaviorSubject(false);
+
   constructor(
     private invoiceService: InvoiceService,
     private notificationService: NotificationService,
@@ -36,10 +40,13 @@ export class InvoicesSaveComponent implements OnInit {
       to: this.to ? this.to.format('YYYY-MM-DD') : undefined
     };
 
-    this.invoiceService.save(params)
-      .subscribe(results => {
-        console.log(results);
+    this.saving.next(true);
 
+    this.invoiceService.save(params)
+      .pipe(
+        finalize(() => this.saving.next(false))
+      )
+      .subscribe(results => {
         const counts = results.reduce((totals, result) => {
           totals[result.status] += 1;
           return totals;

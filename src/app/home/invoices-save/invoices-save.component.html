@@ -1,1 +1,3 @@
 <button mat-raised-button color="primary" (click)="save()">Save to SAP</button>
+
+<mat-spinner diameter="20" *ngIf="saving | async"></mat-spinner>

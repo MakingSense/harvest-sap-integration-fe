@@ -20,4 +20,13 @@ export class ImportReviewComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getErrorMessage(item: ResponseItem<SAPInvoice>) {
+    if (item.status === 'error') {
+      const error = item.error;
+      return error.error?.message.value || error.code || 'Unknown error';
+    }
+
+    return '';
+  }
+
 }
